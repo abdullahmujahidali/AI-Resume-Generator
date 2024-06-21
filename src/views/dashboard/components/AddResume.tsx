@@ -19,7 +19,6 @@ function AddResume() {
   const [resumeTitle, setResumeTitle] = useState(null);
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
-
   const onCreate = () => {
     setLoading(true);
     const id = uuidv4();

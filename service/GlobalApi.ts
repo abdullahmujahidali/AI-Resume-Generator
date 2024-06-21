@@ -14,4 +14,7 @@ const axiosClient = axios.create({
 const createNewResume = (data: unknown) =>
   axiosClient.post("/user-resumes", data);
 
-export default { createNewResume };
+const getUserResume = (userEmail?: string) =>
+  axiosClient.get("/user-resumes?filters[email][$eq]=" + userEmail);
+
+export default { createNewResume, getUserResume };
