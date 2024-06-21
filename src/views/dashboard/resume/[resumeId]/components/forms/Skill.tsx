@@ -79,23 +79,24 @@ function Skills() {
       <p>Add Your top professional key skills</p>
 
       <div>
-        {skillsList.map((item, index) => (
-          <div className="flex justify-between mb-2 border rounded-lg p-3 ">
-            <div>
-              <label className="text-xs">Name</label>
-              <Input
-                className="w-full"
-                defaultValue={item.name}
-                onChange={(e) => handleChange(index, "name", e.target.value)}
+        {skillsList?.length > 0 &&
+          skillsList?.map((item, index) => (
+            <div className="flex justify-between mb-2 border rounded-lg p-3 ">
+              <div>
+                <label className="text-xs">Name</label>
+                <Input
+                  className="w-full"
+                  defaultValue={item.name}
+                  onChange={(e) => handleChange(index, "name", e.target.value)}
+                />
+              </div>
+              <Rating
+                style={{ maxWidth: 120 }}
+                value={item.rating}
+                onChange={(v) => handleChange(index, "rating", v)}
               />
             </div>
-            <Rating
-              style={{ maxWidth: 120 }}
-              value={item.rating}
-              onChange={(v) => handleChange(index, "rating", v)}
-            />
-          </div>
-        ))}
+          ))}
       </div>
       <div className="flex justify-between">
         <div className="flex gap-2">
