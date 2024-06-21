@@ -13,12 +13,14 @@ import { Loader2, PlusSquare } from "lucide-react";
 import { useState } from "react";
 import GlobalApi from "../../../../service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 function AddResume() {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState(null);
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
+  const navigation = useNavigate();
   const onCreate = () => {
     setLoading(true);
     const id = uuidv4();
@@ -37,6 +39,7 @@ function AddResume() {
         console.log("res: ", res);
         setLoading(false);
         setOpenDialog(false);
+        navigation(`/dashboard/resume/${res?.data?.data?.documentId}/edit`);
       })
       .catch((err: unknown) => {
         console.log("err: ", err);

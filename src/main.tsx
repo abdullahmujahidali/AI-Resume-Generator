@@ -7,7 +7,7 @@ import SignInPage from "./views/sign-in/index.tsx";
 import HomePage from "./views/home/index.tsx";
 import Dashboard from "./views/dashboard/index.tsx";
 import { ClerkProvider } from "@clerk/clerk-react";
-import EditResume from "./views/dashboard/resume/[resumeId]/index.tsx";
+import EditResume from "./views/dashboard/resume/[resumeId]/edit/index.tsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
