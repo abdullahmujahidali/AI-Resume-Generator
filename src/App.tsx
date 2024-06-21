@@ -1,12 +1,19 @@
+import { Navigate, Outlet } from 'react-router-dom'
 import './App.css'
-import { Button } from './components/ui/button'
+import { useUser } from '@clerk/clerk-react'
 
 function App() {
+  const {user, isLoaded, isSignedIn} = useUser();
+  if (!isLoaded) {
+    return <div>Loading...</div>
+  }
+  if (!isSignedIn) {
+    return <Navigate to={'/auth/sign-in'} />
+  }
 
   return (
     <>
-      Welcome to AI Resume Builder
-      <Button> Login </Button>
+      <Outlet />
     </>
   )
 }
