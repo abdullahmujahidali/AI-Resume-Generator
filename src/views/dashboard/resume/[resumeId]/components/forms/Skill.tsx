@@ -27,7 +27,7 @@ function Skills() {
   }, []);
 
   const handleChange = (index, name, value) => {
-    const newEntries = skillsList.slice();
+    const newEntries = skillsList?.slice();
 
     newEntries[index][name] = value;
     setSkillsList(newEntries);
@@ -108,14 +108,16 @@ function Skills() {
             {" "}
             + Add More Skill
           </Button>
-          <Button
-            variant="outline"
-            onClick={RemoveSkills}
-            className="text-primary"
-          >
-            {" "}
-            - Remove
-          </Button>
+          {skillsList?.length > 0 && (
+            <Button
+              variant="outline"
+              onClick={RemoveSkills}
+              className="text-primary"
+            >
+              {" "}
+              - Remove
+            </Button>
+          )}
         </div>
         <Button disabled={loading} onClick={() => onSave()}>
           {loading ? <LoaderCircle className="animate-spin" /> : "Save"}

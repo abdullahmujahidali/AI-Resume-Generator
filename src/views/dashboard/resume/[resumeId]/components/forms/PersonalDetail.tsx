@@ -60,8 +60,8 @@ function PersonalDetail({ enabledNext }) {
           <div>
             <label className="text-sm">First Name</label>
             <Input
-              name="firstName"
-              defaultValue={resumeInfo?.firstName}
+              name="first_name"
+              defaultValue={resumeInfo?.first_name}
               required
               onChange={handleInputChange}
             />
@@ -69,10 +69,10 @@ function PersonalDetail({ enabledNext }) {
           <div>
             <label className="text-sm">Last Name</label>
             <Input
-              name="lastName"
+              name="last_name"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.lastName}
+              defaultValue={resumeInfo?.last_name}
             />
           </div>
           <div className="col-span-2">
