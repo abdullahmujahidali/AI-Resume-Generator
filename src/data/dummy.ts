@@ -1,6 +1,6 @@
 export default {
-  firstName: "James",
-  lastName: "Carter",
+  first_name: "James",
+  last_name: "Carter",
   jobTitle: "full stack developer",
   address: "525 N tryon Street, NC 28117",
   phone: "(123)-456-7890",

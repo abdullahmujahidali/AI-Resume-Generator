@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Home } from "lucide-react";
-import Summery from "./forms/Summery";
-import Experience from "./forms/Experience";
+import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
+// import Summery from "./forms/Summery";
+// import Experience from "./forms/Experience";
 import Education from "./forms/Education";
-import Skills from "./forms/Skills";
+import Skills from "./forms/Skill";
 import { Link, Navigate, useParams } from "react-router-dom";
 import ThemeColor from "./ThemeColor";
 
@@ -50,9 +50,11 @@ function FormSection() {
       {activeFormIndex == 1 ? (
         <PersonalDetail enabledNext={(v) => setEnableNext(v)} />
       ) : activeFormIndex == 2 ? (
-        <Summery enabledNext={(v) => setEnableNext(v)} />
-      ) : activeFormIndex == 3 ? (
-        <Experience />
+        <Education />
+      ) : // <Summery enabledNext={(v) => setEnableNext(v)} />
+      activeFormIndex == 3 ? (
+        // <Experience />
+        <Education />
       ) : activeFormIndex == 4 ? (
         <Education />
       ) : activeFormIndex == 5 ? (
