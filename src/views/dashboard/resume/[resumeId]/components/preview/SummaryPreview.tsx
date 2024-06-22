@@ -1,7 +1,7 @@
 import React from "react";
 
 function SummaryPreview({ resumeInfo }) {
-  return <p className="text-xs">{resumeInfo?.summery}</p>;
+  return <p className="text-xs">{resumeInfo?.summary}</p>;
 }
 
 export default SummaryPreview;
