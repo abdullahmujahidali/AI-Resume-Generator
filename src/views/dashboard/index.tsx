@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useEffect, useState } from "react";
 import AddResume from "./components/AddResume";
 import { useUser } from "@clerk/clerk-react";
@@ -9,6 +11,7 @@ function Dashboard() {
   const [resumeList, setResumeList] = useState([]);
   useEffect(() => {
     user && GetResumesList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   /**

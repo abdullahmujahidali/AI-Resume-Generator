@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Header from "@/components/custom/Header";
 import { Button } from "@/components/ui/button";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";

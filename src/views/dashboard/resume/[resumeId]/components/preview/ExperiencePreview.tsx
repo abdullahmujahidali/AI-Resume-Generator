@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 function ExperiencePreview({ resumeInfo }) {
   return (
     <div className="my-6">

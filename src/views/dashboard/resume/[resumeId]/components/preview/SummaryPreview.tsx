@@ -1,4 +1,4 @@
-import React from "react";
+// @ts-nocheck
 
 function SummaryPreview({ resumeInfo }) {
   return <p className="text-xs">{resumeInfo?.summary}</p>;

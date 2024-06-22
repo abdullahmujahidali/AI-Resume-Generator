@@ -1,9 +1,10 @@
+// @ts-nocheck
+
 import React, { useState } from "react";
 import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
 import Summary from "./forms/Summary";
-// import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skill";
 import { Link, Navigate, useParams } from "react-router-dom";

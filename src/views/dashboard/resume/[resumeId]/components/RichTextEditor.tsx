@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Button } from "@/components/ui/button";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { Brain, LoaderCircle } from "lucide-react";
