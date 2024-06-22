@@ -5,7 +5,7 @@ import ResumePreview from "@/views/dashboard/resume/[resumeId]/components/Resume
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../service/GlobalApi";
-import { RWebShare } from "react-web-share";
+// import { RWebShare } from "react-web-share";
 
 function ViewResume() {
   const [resumeInfo, setResumeInfo] = useState();
@@ -21,7 +21,7 @@ function ViewResume() {
     });
   };
 
-  const HandleDownload = () => {
+  const handlePrint = () => {
     window.print();
   };
 
@@ -32,16 +32,18 @@ function ViewResume() {
 
         <div className="my-10 mx-10 md:mx-20 lg:mx-36">
           <h2 className="text-center text-2xl font-medium">
-            Congrats! Your Ultimate AI generates Resume is ready !{" "}
+            Congrats! Your Ultimate AI generated Resume is ready !{" "}
           </h2>
           <p className="text-center text-gray-400">
-            Now you are ready to download your resume and you can share unique
-            resume url with your friends and family{" "}
+            Now you are ready to download your resume
+            {/* and you can share unique
+            resume url with your friends and family{" "} */}
           </p>
-          <div className="flex justify-between px-44 my-10">
-            <Button onClick={HandleDownload}>Download</Button>
+          <div className="flex justify-center px-44 my-10">
+            {/* <div className="flex justify-between px-44 my-10"> */}
+            <Button onClick={handlePrint}>Download</Button>
 
-            <RWebShare
+            {/* <RWebShare
               data={{
                 text: "Hello Everyone, This is my resume please open url to see it",
                 url:
@@ -59,7 +61,7 @@ function ViewResume() {
             >
               {" "}
               <Button>Share</Button>
-            </RWebShare>
+            </RWebShare> */}
           </div>
         </div>
       </div>

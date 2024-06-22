@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RichTextEditor from "../RichTextEditor";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { useParams } from "react-router-dom";
@@ -18,14 +18,13 @@ const formField = {
   workSummary: "",
 };
 function Experience() {
-  const [loading, setLoading] = useState(false);
+  const [experinceList, setExperinceList] = useState([]);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const params = useParams();
-  const [experinceList, setExperinceList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    resumeInfo &&
-      resumeInfo?.experience.length > 0 &&
+    resumeInfo?.experience?.length > 0 &&
       setExperinceList(resumeInfo?.experience);
   }, []);
 
@@ -84,7 +83,7 @@ function Experience() {
       (res) => {
         console.log(res);
         setLoading(false);
-        toast("Experience details updated !");
+        toast("Details updated !");
       },
       (error) => {
         setLoading(false);
@@ -175,15 +174,14 @@ function Experience() {
               {" "}
               + Add More Experience
             </Button>
-            {experinceList?.length > 0 && (
-              <Button
-                variant="outline"
-                onClick={RemoveExperience}
-                className="text-primary"
-              >
-                - Remove
-              </Button>
-            )}
+            <Button
+              variant="outline"
+              onClick={RemoveExperience}
+              className="text-primary"
+            >
+              {" "}
+              - Remove
+            </Button>
           </div>
           <Button disabled={loading} onClick={() => onSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
