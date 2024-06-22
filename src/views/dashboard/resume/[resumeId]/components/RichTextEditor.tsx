@@ -25,14 +25,14 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [loading, setLoading] = useState(false);
   const GenerateSummeryFromAI = async () => {
-    if (!resumeInfo?.Experience[index]?.title) {
+    if (!resumeInfo?.experience[index]?.title) {
       toast("Please Add Position Title");
       return;
     }
     setLoading(true);
     const prompt = PROMPT.replace(
       "{positionTitle}",
-      resumeInfo.Experience[index].title
+      resumeInfo.experience[index].title
     );
 
     const result = await AIChatSession.sendMessage(prompt);
@@ -45,7 +45,7 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
   return (
     <div>
       <div className="flex justify-between my-2">
-        <label className="text-xs">Summery</label>
+        <label className="text-xs">Summary</label>
         <Button
           variant="outline"
           size="sm"

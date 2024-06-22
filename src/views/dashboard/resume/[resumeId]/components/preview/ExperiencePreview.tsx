@@ -1,6 +1,4 @@
-import React from "react";
-
-function EducationalPreview({ resumeInfo }) {
+function ExperiencePreview({ resumeInfo }) {
   return (
     <div className="my-6">
       <h2
@@ -9,7 +7,7 @@ function EducationalPreview({ resumeInfo }) {
           color: resumeInfo?.themeColor,
         }}
       >
-        Education
+        Professional Experience
       </h2>
       <hr
         style={{
@@ -17,27 +15,33 @@ function EducationalPreview({ resumeInfo }) {
         }}
       />
 
-      {resumeInfo?.education.map((education, index) => (
-        <div key={index} className="my-5">
-          <h2
-            className="text-sm font-bold"
-            style={{
-              color: resumeInfo?.themeColor,
-            }}
-          >
-            {education.universityName}
-          </h2>
-          <h2 className="text-xs flex justify-between">
-            {education?.degree} in {education?.major}
-            <span>
-              {education?.startDate} - {education?.endDate}
-            </span>
-          </h2>
-          <p className="text-xs my-2">{education?.description}</p>
-        </div>
-      ))}
+      {resumeInfo?.experience?.length > 0 &&
+        resumeInfo?.experience?.map((experience, index) => (
+          <div key={index} className="my-5">
+            <h2
+              className="text-sm font-bold"
+              style={{
+                color: resumeInfo?.themeColor,
+              }}
+            >
+              {experience?.title}
+            </h2>
+            <h2 className="text-xs flex justify-between">
+              {experience?.companyName},{experience?.city},{experience?.state}
+              <span>
+                {experience?.startDate} To{" "}
+                {experience?.currentlyWorking ? "Present" : experience.endDate}{" "}
+              </span>
+            </h2>
+            <p className="text-xs my-2">{experience.workSummary}</p>
+            <div
+              className="text-xs my-2"
+              dangerouslySetInnerHTML={{ __html: experience?.workSummary }}
+            />
+          </div>
+        ))}
     </div>
   );
 }
 
-export default EducationalPreview;
+export default ExperiencePreview;

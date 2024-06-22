@@ -18,7 +18,7 @@ function ResumePreview() {
     >
       <PersonalDetailPreview resumeInfo={resumeInfo} />
       <SummaryPreview resumeInfo={resumeInfo} />
-      {resumeInfo?.Experience?.length > 0 && (
+      {resumeInfo?.experience?.length > 0 && (
         <ExperiencePreview resumeInfo={resumeInfo} />
       )}
       {resumeInfo?.education?.length > 0 && (
@@ -30,5 +30,4 @@ function ResumePreview() {
     </div>
   );
 }
-
 export default ResumePreview;

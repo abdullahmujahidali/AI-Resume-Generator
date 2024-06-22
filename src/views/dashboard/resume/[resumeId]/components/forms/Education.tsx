@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { LoaderCircle } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../../../service/GlobalApi";
 import { toast } from "sonner";
@@ -24,11 +24,8 @@ function Education() {
   ]);
 
   useEffect(() => {
-    if (resumeInfo?.education && Array.isArray(resumeInfo.education)) {
-      setEducationalList(resumeInfo.education);
-    }
-  }, [resumeInfo]);
-
+    resumeInfo && setEducationalList(resumeInfo?.education);
+  }, []);
   const handleChange = (event, index) => {
     const newEntries = educationalList?.slice();
     const { name, value } = event.target;
@@ -49,11 +46,9 @@ function Education() {
       },
     ]);
   };
-
   const RemoveEducation = () => {
     setEducationalList((educationalList) => educationalList.slice(0, -1));
   };
-
   const onSave = () => {
     setLoading(true);
     const data = {
@@ -66,7 +61,7 @@ function Education() {
       (resp) => {
         console.log(resp);
         setLoading(false);
-        toast("Details updated!");
+        toast("Details updated !");
       },
       (error) => {
         setLoading(false);
@@ -76,12 +71,11 @@ function Education() {
   };
 
   useEffect(() => {
-    setResumeInfo((prevInfo) => ({
-      ...prevInfo,
+    setResumeInfo({
+      ...resumeInfo,
       education: educationalList,
-    }));
-  }, [educationalList, setResumeInfo]);
-
+    });
+  }, [educationalList]);
   return (
     <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
       <h2 className="font-bold text-lg">Education</h2>
@@ -153,6 +147,7 @@ function Education() {
             onClick={AddNewEducation}
             className="text-primary"
           >
+            {" "}
             + Add More Education
           </Button>
           {educationalList?.length > 0 && (

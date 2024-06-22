@@ -18,15 +18,15 @@ const formField = {
   workSummary: "",
 };
 function Experience() {
-  const [experinceList, setExperinceList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const params = useParams();
-  const [loading, setLoading] = useState(false);
+  const [experinceList, setExperinceList] = useState([]);
 
   useEffect(() => {
     resumeInfo &&
-      resumeInfo?.Experience.length > 0 &&
-      setExperinceList(resumeInfo?.Experience);
+      resumeInfo?.experience.length > 0 &&
+      setExperinceList(resumeInfo?.experience);
   }, []);
 
   const handleChange = (index, event) => {
@@ -66,7 +66,7 @@ function Experience() {
   useEffect(() => {
     setResumeInfo({
       ...resumeInfo,
-      Experience: experinceList,
+      experience: experinceList,
     });
   }, [experinceList]);
 
@@ -74,7 +74,7 @@ function Experience() {
     setLoading(true);
     const data = {
       data: {
-        Experience: experinceList.map(({ id, ...rest }) => rest),
+        experience: experinceList.map(({ id, ...rest }) => rest),
       },
     };
 
@@ -84,7 +84,7 @@ function Experience() {
       (res) => {
         console.log(res);
         setLoading(false);
-        toast("Details updated !");
+        toast("Experience details updated !");
       },
       (error) => {
         setLoading(false);
@@ -175,14 +175,15 @@ function Experience() {
               {" "}
               + Add More Experience
             </Button>
-            <Button
-              variant="outline"
-              onClick={RemoveExperience}
-              className="text-primary"
-            >
-              {" "}
-              - Remove
-            </Button>
+            {experinceList?.length > 0 && (
+              <Button
+                variant="outline"
+                onClick={RemoveExperience}
+                className="text-primary"
+              >
+                - Remove
+              </Button>
+            )}
           </div>
           <Button disabled={loading} onClick={() => onSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
